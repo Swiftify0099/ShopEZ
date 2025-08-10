@@ -4,26 +4,26 @@ import axios from 'axios'
 
 const AllUsers = () => {
 
-  const [users, setUsers] = useState([]);
-  const [orders, setOrders] = useState([]);
+  const [ users, setUsers ] = useState([]);
+  const [ orders, setOrders ] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchUsersData();
   }, [])
 
-  const fetchUsersData = async() =>{
-    await axios.get('http://localhost:6001/fetch-users').then(
-      (response)=>{
-        setUsers(response.data.filter(user=> user.usertype === 'customer'));
+  const fetchUsersData = async () => {
+    await axios.get('https://shopez-cucq.onrender.com/fetch-users').then(
+      (response) => {
+        setUsers(response.data.filter(user => user.usertype === 'customer'));
       }
     )
 
-    await axios.get('http://localhost:6001/fetch-orders').then(
-      (response)=>{
+    await axios.get('https://shopez-cucq.onrender.com/fetch-orders').then(
+      (response) => {
         setOrders(response.data);
       }
     )
-   
+
   }
 
 
@@ -33,29 +33,29 @@ const AllUsers = () => {
 
       <div className="user-cards">
 
-        {users.map((user)=>{
-          return(
+        { users.map((user) => {
+          return (
             <div className="user-card">
               <span>
                 <h5>User Id </h5>
-                <p>{user._id}</p>
+                <p>{ user._id }</p>
               </span>
               <span>
                 <h5>User Name </h5>
-                <p>{user.username}</p>
+                <p>{ user.username }</p>
               </span>
               <span>
                 <h5>Email Address </h5>
-                <p>{user.email}</p>
+                <p>{ user.email }</p>
               </span>
               <span>
                 <h5>Orders </h5>
-                <p>{orders.filter(order=> order.userId === user._id).length}</p>
+                <p>{ orders.filter(order => order.userId === user._id).length }</p>
               </span>
             </div>
           )
-        })}
-        
+        }) }
+
 
       </div>
 
