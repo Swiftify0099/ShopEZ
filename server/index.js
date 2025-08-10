@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 const PORT = 6001;
 
-mongoose.connect('mongodb://localhost:27017/shopEZ', {
+mongoose.connect('mongodb+srv://pankajyewale:Pankaj%405615@cluster0.oillgpf.mongodb.net/', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
